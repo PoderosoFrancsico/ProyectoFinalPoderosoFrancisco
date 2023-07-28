@@ -7,3 +7,4 @@ from django.http import HttpResponse
 
 def inicio(request):
     return render(request, 'inicio.html')
+    
