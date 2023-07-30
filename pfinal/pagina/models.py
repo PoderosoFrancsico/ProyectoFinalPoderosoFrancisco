@@ -10,4 +10,9 @@ class Usuario(models.Model):
     password=models.CharField(max_length=20)
     def __str__(self):
         return f'Nombre: {self.nombre} - Apellio: {self.apellido} - Email: {self.email}'
+    
+
+class Blogs(models.Model):
+
+    titulo=models.CharField(max_length=60)
         
