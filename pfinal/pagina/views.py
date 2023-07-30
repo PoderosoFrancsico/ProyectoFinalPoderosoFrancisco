@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from pagina.models import *
+from pagina.forms import *
 
 # Create your views here.
 
@@ -14,3 +15,21 @@ def blogs(request):
 def about(request):
     return render(request, 'about.html')
     
+def usuarios(request):
+
+    if request.method == 'POST':
+        miFormulario = UsuariosFormulario(request.POST)#aca llega la info del HTML
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+
+            usuario = Usuario(nombre=informacion['nombre'], 
+                                          apellido=informacion['apellido'], 
+                                          email=informacion['email'],)
+            usuario.save()
+            return render(request, 'inicio.html')
+    else: 
+        miFormulario= UsuariosFormulario()
+
+    return render(request, r'singin.html', {'miFormulario': miFormulario})
