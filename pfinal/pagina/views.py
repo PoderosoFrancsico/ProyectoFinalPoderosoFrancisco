@@ -4,6 +4,7 @@ from pagina.models import *
 from pagina.forms import *
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView 
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
 #from django.views.generic.detail import DetailView from django.views.generic.detail.edit import CreateView, Update view, DeleteView
 
 # Create your views here.
@@ -12,6 +13,8 @@ from django.urls import reverse_lazy
 def inicio(request):
     return render(request, 'inicio.html')
 
+
+@login_required
 def blogs(request):
     return render(request, 'blogs.html')
 
