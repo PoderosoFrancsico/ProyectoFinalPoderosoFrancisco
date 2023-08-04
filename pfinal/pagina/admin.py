@@ -5,3 +5,5 @@ from login.models import *
 
 
 admin.site.register(Usuario)
+
+admin.site.register(Avatar)

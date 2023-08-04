@@ -25,9 +25,29 @@
             
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio.html' %}">inicio</a>
+                {% if request.user.is_authenticated %}
                 <a class="navbar-brand" href="{% url 'blogs.html' %}">blogs</a>
-                <a class="btn btn-primary" href="{% url 'singin' %}">Sign Up</a>
+                <a class="navbar-brand" href="{% url 'editarperfil.html' %}">edit</a>
+                {% endif %}
+                {% if not request.user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url 'login' %}">Log in</a>
+                <a class="btn btn-primary" href="{% url 'singin' %}">Sign Up</a>
+                {% endif %}
+                <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+
+                {% if request.user.is_authenticated %}
+                
+                <div class="text-center">
+
+                    <img height="40px" width="40px" src="{{url}}">
+                    <h3>Hola {{user.username}} </h3>
+        
+                </div>
+
+                <!--p class="text-muted small mb-4 mb-lg-0">Hola,{{user.username}} </p-->
+
+                {% endif %}
+                
             </div>
         </nav>
         <!-- Masthead-->
@@ -82,6 +102,7 @@
         {{mensaje}}
 
         {% block contenidoQueCambia %}
+
 
         {% endblock %}
 
