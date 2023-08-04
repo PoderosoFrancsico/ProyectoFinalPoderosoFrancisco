@@ -57,21 +57,22 @@ def editar_perfil(request):
 
     return render(request, 'editarperfil.html', {'miFormulario': miFormulario, 'usuario': usuario})
 
-#def usuarios(request):
+def changeavatar(request):
 
-    if request.method == 'POST':
-        miFormulario = UsuariosFormulario(request.POST)#aca llega la info del HTML
-        print(miFormulario)
+    if request == 'POST':
+        
+        miFormulario= AvatarForm(request.POST, request.FILES)
 
-        if miFormulario.is_valid:
-            informacion = miFormulario.cleaned_data
+        if miFormulario.is_valid():
 
-            usuario = Usuario(nombre=informacion['nombre'], 
-                                          apellido=informacion['apellido'], 
-                                          email=informacion['email'],)
-            usuario.save()
+            u = User.objects.get(username=request.user)
+
+            avatar= Avatar(user=u, imagen=miFormulario.cleaned_data['imagen'])
+
+            avatar.save()
+
             return render(request, 'inicio.html')
-    else: 
-        miFormulario= UsuariosFormulario()
-
-    return render(request, r'singin.html', {'miFormulario': miFormulario})
+        
+    else:
+        miFormulario= AvatarForm()
+    return render(request, 'avatar.html', {'miFormulario':miFormulario})
