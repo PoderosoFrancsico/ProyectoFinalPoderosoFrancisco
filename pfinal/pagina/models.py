@@ -16,6 +16,8 @@ class Usuario(models.Model):
 class Blogs(models.Model):
 
     titulo=models.CharField(max_length=60)
+    cuerpo=models.CharField(max_length=1200)
+    imagen = models.ImageField(upload_to='portada', null=True, blank=True)
         
 
 class Avatar(models.Model):

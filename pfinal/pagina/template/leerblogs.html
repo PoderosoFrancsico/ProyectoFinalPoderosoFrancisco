@@ -3,21 +3,25 @@
 
 {% load static %}
 
-{% block about %}
-
+{% block contenidoQueCambia %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <title>Todos los Blogs</title>
 </head>
 <body>
-    <p style="text-align: center;"><img src="/../media/fijos/test.jpg" /></p>
-    <h1><p style="text-align: center;">Poderoso Francisco</p></h1>
-    <h3>Descripcion muy interesante</h3>
+    
+    {% for p in blogs %}
+        <li>{{p}} </li>
+
+    {% endfor %}
+
+
 </body>
 </html>
+
 
 
 {% endblock%}

@@ -76,3 +76,31 @@ def changeavatar(request):
     else:
         miFormulario= AvatarForm()
     return render(request, 'avatar.html', {'miFormulario':miFormulario})
+
+def leerblogs(request):
+
+    lblogs = Blogs.objects.all()
+
+    contexto = {'lblogs': lblogs}
+
+    return render(request, 'leerblogs.html', contexto)
+
+
+def crearblog(request):
+
+    if request.method == 'POST':
+        miFormulario = NuevoBlog(request.POST)#aca llega la info del HTML
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+            informacion = miFormulario.cleaned_data
+
+            blog = Blogs        (titulo=informacion['titulo'], 
+                                          cuerpo=informacion['cuerpo'], 
+                                          imagen=informacion['imagen'])
+            blog.save()
+            return render(request, 'inicio.html')
+    else: 
+        miFormulario= NuevoBlog()
+
+    return render(request, 'blogs.html', {'miFormulario': miFormulario})

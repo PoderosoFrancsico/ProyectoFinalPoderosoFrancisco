@@ -26,9 +26,19 @@
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio.html' %}">inicio</a>
                 {% if request.user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'blogs.html' %}">blogs</a>
                 
-
+                
+                <li style="list-style: none; font-weight: bold;" class="navbar-brand dropdown">
+                    <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Blogas
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'blogs.html' %}">Crear</a></li>
+                        <li><a class="dropdown-item" href="{% url 'leerblogs.html' %}">Ver blogs</a></li>
+                    </ul>
+                </li>
+                
+                
                 <li style="list-style: none; font-weight: bold;" class="navbar-brand dropdown">
                     <a class="navbar-brand dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Edicion de perfil
@@ -55,14 +65,17 @@
         
                 </div>
                 <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
-                <!--p class="text-muted small mb-4 mb-lg-0">Hola,{{user.username}} </p-->
+                
 
                 {% endif %}
                 
             </div>
-        {% block login %}
-
+    
         </nav>
+
+        {% block login %}
+        {% block about %}
+
         <!-- Masthead-->
         <header class="masthead">
             <div class="container position-relative">
@@ -117,10 +130,10 @@
         {% block contenidoQueCambia %}
 
 
-        {% endblock %}
-        {% endblock %}
+        <!--{% endblock %}
+        {% endblock %} -->
 
-        <!-- Icons Grid -->
+        <!-- Icons Grid 
         <section class="features-icons bg-light text-center">
             <div class="container">
                 <div class="row">
@@ -147,8 +160,9 @@
                     </div>
                 </div>
             </div>
-        </section> 
-
+        </section> -->
+        
+        {% endblock %}
 
         <!-- Image Showcases 
         <section class="showcase">
@@ -250,6 +264,7 @@
                 </div>
             </div>
         </section> 
+        
         <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">
@@ -272,10 +287,10 @@
                                 <a href="#!"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                                <a href="https://www.linkedin.com/in/francisco-poderoso-444663241/"><i class="bi-linkedin fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                                <a href="https://www.instagram.com/franpoderoso/"><i class="bi-instagram fs-3"></i></a>
                             </li>
                         </ul>
                     </div>

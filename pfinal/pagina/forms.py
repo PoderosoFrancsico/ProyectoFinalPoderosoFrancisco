@@ -34,3 +34,13 @@ class AvatarForm(forms.Form):
         fields={'imagen'}
         help_texts = {k:"" for k in fields}
             
+class NuevoBlog(forms.Form):
+
+    titulo = forms.CharField()
+    cuerpo = forms.CharField()
+    imagen = forms.ImageField(required=True)
+
+    class Meta:
+        model= User
+        fields={'imagen'}
+        help_texts = {k:"" for k in fields}
