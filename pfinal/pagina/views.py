@@ -89,7 +89,7 @@ def leerblogs(request):
 def crearblog(request):
 
     if request.method == 'POST':
-        miFormulario = NuevoBlog(request.POST)#aca llega la info del HTML
+        miFormulario = NuevoBlog(request.POST, request.FILE)
         print(miFormulario)
 
         if miFormulario.is_valid:
