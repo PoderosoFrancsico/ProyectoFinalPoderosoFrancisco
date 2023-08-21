@@ -59,7 +59,7 @@ def editar_perfil(request):
 
 def changeavatar(request):
 
-    if request == 'POST':
+    if request.method == 'POST':
         
         miFormulario= AvatarForm(request.POST, request.FILES)
 
@@ -89,7 +89,7 @@ def leerblogs(request):
 def crearblog(request):
 
     if request.method == 'POST':
-        miFormulario = NuevoBlog(request.POST, request.FILE)
+        miFormulario = NuevoBlog(request.POST, request.FILES)
         print(miFormulario)
 
         if miFormulario.is_valid:
