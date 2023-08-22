@@ -79,11 +79,15 @@ def changeavatar(request):
 
 def leerblogs(request):
 
-    lblogs = Blogs.objects.all()
+    leerblogs = Blogs.objects.all()
 
-    contexto = {'lblogs': lblogs}
+    contexto = {'leerblogs': leerblogs}
 
     return render(request, 'leerblogs.html', contexto)
+
+def borrarblogs(request):
+
+    return
 
 
 def crearblog(request):
