@@ -10,4 +10,10 @@ urlpatterns = [
     path('leerblogs', views.leerblogs, name='leerblogs.html'),
     path('borrarblogs/<blog_titulo>/', views.borrarblogs, name='borrarblogs'),
     path('editarblog/<blog_titulo>/', views.editarblog, name='editarblog'),
+    path('blogs/list', views.BlogsList.as_view(), name='list'),
+    path(r'^(?P<pk>/d+)$', views.BlogsDetalle.as_view(), name='detail'),
+    path(r'^nuevo$', views.BlogsCreate.as_view(), name='new'),
+    path(r'^editar(?P<pk>/d+)$', views.BlogsUpdate.as_view(), name='edit'),
+    path(r'^borrar(?P<pk>/d+)$', views.BlogsDelete.as_view(), name='delete'),
+
 ]

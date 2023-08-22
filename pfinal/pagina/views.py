@@ -139,3 +139,30 @@ def crearblog(request):
         miFormulario= NuevoBlog()
 
     return render(request, 'blogs.html', {'miFormulario': miFormulario})
+
+class BlogsList(ListView):
+
+    model = Blogs
+    template_name = 'blogs_list.html'
+
+class BlogsDetalle(DetailView):
+
+    model = Blogs
+    template_name = 'blogs_detalle.html'
+
+class BlogsCreate(CreateView):
+
+    model = Blogs
+    success_url = 'blogs/list'
+    fields = ['titulo', 'cuerpo', 'imagen']
+
+class BlogsUpdate(UpdateView):
+
+    model = Blogs
+    success_url = 'blogs/list'
+    fields = ['titulo', 'cuerpo', 'imagen']
+
+class BlogsDelete(DeleteView):
+
+    model = Blogs
+    success_url = 'blogs/list'

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle</title>
+</head>
+<body>
+    <ul>
+        {% for blogs in object_list %}
+            <li>
+                <p>Titulo: <i>{{ blogs.titulo }}</i></p>
+            
+                <p>
+
+                    <a href='{% url "detail" %}'> Regresar</a>
+                    <a href='{% url "edit" %}'> Regresar</a>
+                    <a href='{% url "delete" %}'> Regresar</a>
+
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
