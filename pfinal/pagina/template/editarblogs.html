@@ -1,0 +1,20 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Editar blog</h1>
+
+
+<form action="{% url 'editarblog' blog_titulo %}" method="POST">
+
+    {% csrf_token %}
+    <table>
+        {{ miFormulario.as_table }}
+        
+    </table>
+    <input type="submit" value="Actualizar">
+</form>
+
+{% endblock %}

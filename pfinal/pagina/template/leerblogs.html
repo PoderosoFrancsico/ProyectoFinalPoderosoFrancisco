@@ -19,8 +19,13 @@
     
         <li>{{p}} </li>
 
-    {% endfor %}
+        <button>
+            <a href="{% url 'borrarblogs' p.titulo %}"> Eliminar</a>
+            <a href="{% url 'editarblog' p.titulo %}"> Editar</a>
+        </button>
 
+    {% endfor %}
+    <br>
     <a class="button" href="{% url 'blogs.html' %}">Crear Nuevo</a>
 </body>
 </html>

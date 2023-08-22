@@ -85,10 +85,41 @@ def leerblogs(request):
 
     return render(request, 'leerblogs.html', contexto)
 
-def borrarblogs(request):
+def borrarblogs(request, blog_titulo):
 
-    return
+    blog = Blogs.objects.get(titulo=blog_titulo)
+    blog.delete()
+    # vuelvo al menú
+    leerblogs = Blogs.objects.all()
 
+    contexto = {'leerblogs': leerblogs}
+
+    return render(request, 'leerblogs.html', contexto)
+    
+def editarblog(request, blog_titulo):
+
+    blogs = Blogs.objects.get(titulo=blog_titulo)
+
+    if request.method == 'POST':
+            miFormulario = NuevoBlog(request.POST, request.FILES)
+            print(miFormulario)
+
+            if miFormulario.is_valid():
+                informacion = miFormulario.cleaned_data
+
+                blog = Blogs        (titulo=informacion['titulo'], 
+                                          cuerpo=informacion['cuerpo'], 
+                                          imagen=informacion['imagen'])
+                blog.save()
+            
+
+
+                return render(request, 'leerblogs.html', {'miFormulario': miFormulario})
+
+    else:
+        miFormulario= NuevoBlog(initial={'titulo':Blogs.titulo, 'cuerpo':Blogs.cuerpo, 'imagen':Blogs.imagen})
+    
+    return render(request, 'editarblogs.html', {'miFormulario': miFormulario, 'blog_titulo':blog_titulo})
 
 def crearblog(request):
 

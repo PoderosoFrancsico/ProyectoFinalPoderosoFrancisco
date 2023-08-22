@@ -8,4 +8,6 @@ urlpatterns = [
     path('editarperfil', views.editar_perfil, name='editarperfil.html'),
     path('avatar', views.changeavatar, name='avatar.html'),
     path('leerblogs', views.leerblogs, name='leerblogs.html'),
+    path('borrarblogs/<blog_titulo>/', views.borrarblogs, name='borrarblogs'),
+    path('editarblog/<blog_titulo>/', views.editarblog, name='editarblog'),
 ]
